@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "calc.h"
 
 float calc_resistance(int count, char conn, float *array)
@@ -6,8 +7,12 @@ float calc_resistance(int count, char conn, float *array)
 	float varde;
 	float resultat = 0;
 	int i, j, nr;
+
+	array = malloc (count+1);
+ 	if (array==NULL) 
+		exit (1);
 		
-	if (conn == 'P') 
+	if (conn == 'S') 
 	{                 
    		for (i=0; i<count; i++)
 		{
@@ -17,11 +22,10 @@ float calc_resistance(int count, char conn, float *array)
 			array[i] = varde;
 			resultat = (resultat+array[i]);
 		}		
-		resultat = resultat;
-		return resultat;		
+		resultat = resultat;				
 	}		
    	
-	else if (conn == 'S')
+	else if (conn == 'P')
 	{                 
       		for (i=0; i<count; i++)
 		{
@@ -29,23 +33,25 @@ float calc_resistance(int count, char conn, float *array)
 			printf( "Komponent %d i ohm: ",nr);  
     			scanf( "%f", &varde );   
 			array[i] = varde;
-			resultat = (resultat + (1.0 / array[i]));
+			resultat = (resultat + (1.0 / array[i]));	
 		}
+		resultat = (1 / resultat);	
 
 		for (j=0; j<count; j++)
-		{
+		{		
 			if (array[j] == 0)
-			{
-				resultat = 0;
-				j = count;
+			{				
+			resultat = 0;				
 			}
-			else
-			{
-				resultat = (1.0 / resultat);
-			}
-		}		
-		return resultat;	
+		}
 	}
+	
+	else
+	{				
+			resultat = -1;				
+	}	
+	free (array);
+	return resultat;
 }
 
 

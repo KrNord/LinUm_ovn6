@@ -21,7 +21,7 @@ int main ()
 
 	printf("Den resulterande resistansen blir: %.0f\n", resultat);
 
-	exit(0);
+	return 0;
 }
 
 
