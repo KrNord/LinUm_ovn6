@@ -4,7 +4,6 @@
 
 float calc_resistance(int count, char conn, float *array)
 {
-	float varde;
 	float resultat = 0;
 	int i, j, nr;
 
@@ -18,8 +17,7 @@ float calc_resistance(int count, char conn, float *array)
 		{
 			nr = (i+1);					 
 			printf( "Komponent %d i ohm: ",nr);  
- 			scanf( "%f", &varde );   
-			array[i] = varde;
+ 			scanf( "%f", &array[i]);   
 			resultat = (resultat+array[i]);
 		}		
 		resultat = resultat;				
@@ -31,8 +29,7 @@ float calc_resistance(int count, char conn, float *array)
 		{
 			nr = (i+1);					 
 			printf( "Komponent %d i ohm: ",nr);  
-    			scanf( "%f", &varde );   
-			array[i] = varde;
+    			scanf( "%f", &array[i]);   
 			resultat = (resultat + (1.0 / array[i]));	
 		}
 		resultat = (1 / resultat);	
