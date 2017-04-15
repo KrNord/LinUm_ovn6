@@ -1,12 +1,21 @@
-CC = gcc
-LIBFLAG = -L. -lresistance -Wl,-rpath,.
+all: test_libresistance
 
-all:			program
+test_libresistance: main.c libresistance.so
+	gcc -o test_libresistance main.c -lm -L. -lresistance -Wl,-rpath
 
-program:		main.c libresistance.so
-			$(CC) -o program main.c $(LIBFLAG)
+calc_resistance.o: calc_resistance.c calc_resistance.h
+	gcc -c -fPIC calc_resistance.c -lm
 
-libresistance.so:	lib/calc.c lib/calc.h 
-			$(CC) -c -fPIC lib/calc.c
-			$(CC) -shared -fPIC -o libresistance.so calc.o
-		
+libresistance.so: calc_resistance.o 
+	gcc -shared -fPIC -o libresistance.so libresistance.o 
+
+clean:
+	rm *.o
+	rm *.so
+	rm test_libresistance
+
+
+
+
+
+	
