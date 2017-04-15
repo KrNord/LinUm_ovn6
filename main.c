@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "calc.h"
+#include "libresistance.h"
 
 
 int main ()
@@ -17,11 +17,7 @@ int main ()
 
 	float array[count];
 
-	resultat = calc_resistance(count, conn, array);
-
-	printf("Den resulterande resistansen blir: %.0f\n", resultat);
-
-	return 0;
+	printf("Den resulterande resistansen blir: %.0f\n", calc_resistance(count, conn, array));
 }
 
 
