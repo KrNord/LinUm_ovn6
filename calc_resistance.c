@@ -11,7 +11,7 @@ float calc_resistance(int count, char conn, float *array)
  	if (array==NULL) 
 		exit (1);
 		
-	if (conn == 'S') 
+	if (conn == 'S' || conn == 's') 
 	{                 
    		for (i=0; i<count; i++)
 		{
@@ -23,7 +23,7 @@ float calc_resistance(int count, char conn, float *array)
 		resultat = resultat;				
 	}		
    	
-	else if (conn == 'P')
+	else if (conn == 'P' || conn == 'p')
 	{                 
       		for (i=0; i<count; i++)
 		{
